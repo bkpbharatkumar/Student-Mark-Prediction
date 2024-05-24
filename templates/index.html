@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Mark Predictor ML App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-image: url("https://img3.wallspic.com/crops/9/3/4/4/3/134439/134439-headphones-text-education-author-marketing-2560x1440.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .login {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .shap {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: rgb(25, 25, 25);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            background-color: rgba(6, 204, 200, 0.503);
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.4s ease 0s;
+        }
+
+        .btn:hover {
+            color: #000;
+            background: #f6b93b;
+        }
+
+        .btn2 {
+            width: calc(100% - 30px);
+            padding: 10px;
+            border-radius: 5px;
+            background-color: rgba(6, 204, 200, 0.503);
+            border: none;
+            font-size: 16px;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        input[type="number"] {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .size {
+            margin-top: 20px;
+            color: rgb(191, 126, 5);
+        }
+
+        .btn3 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .shap {
+                font-size: 20px;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .btn2 {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <!-- Form Get input to predict Marks-->
+        <form action="{{ url_for('predict')}}" method="post">
+            <h1 class="shap">ENTER YOUR STUDY HOURS TO PREDICT MARKS</h1>
+            <div>
+                <div class="btn3">ENTER YOUR STUDY HOURS</div>
+                <input class="btn2" type="number" name="study_hours" placeholder="" required="required" />
+            </div>
+            <!-- Show button -->
+            <div class="button_cont button_css">
+                <button type="submit" class="btn"><strong>Predict Marks</strong></button>
+            </div>
+        </form>
+        <div class="size">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+    </div>
+</body>
+
+</html>
